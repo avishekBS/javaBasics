@@ -35,13 +35,13 @@ public class PolymorphismDemo {
 		example1.show();
 		
 		System.out.println("\n\nPloymorphism: ");
-		Example1 example2 = new Example2();
+		Example1 example2 = new Example2();  // Runtime Polymorphism
 		example2.print(); // when method not overriden calls parent
 		example2.show(); // when method not overriden calls child
 		//example2.config(); --> method child cant be called as reference type is parent & method not present in parent
 		
 		example2 = new Example3();
-		example2.show();
+		example2.show(); //dynamic method dispatch
 		
 		/*
 		 * what we learn here:
@@ -49,6 +49,8 @@ public class PolymorphismDemo {
 		 * 2. If Method is overridden then object class is called
 		 * 3. 
 		 */
+		
+		
 	}
 
 }

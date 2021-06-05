@@ -31,7 +31,23 @@ public class SwitchOperation {
 		    System.out.println("Sunday");
 		    break;
 		   default:
+			System.out.println("Run Default switch");
 		    break;
+		}
+		/*
+		 * String supports after 1.7 java
+		 */
+		String name = "Avishek";
+		switch (name) {
+		case "Banik":
+			System.out.println("name is Banik");
+			break;
+		case "Avishek":
+			System.out.println("name is Avishek");
+			break;
+		default:
+			System.out.println("Run Default switch");
+			break;
 		}
 	}
 
