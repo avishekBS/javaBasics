@@ -11,6 +11,25 @@ import java.util.List;
  */
 public class ArrayListSortComparator {
 	public static void main(String[] args) {
+		new ArrayListSortComparator().comparatorInteger();
+		new ArrayListSortComparator().comparatorString();
+	}
+	//String way to use comparator
+	private void comparatorString() {
+		List<String> values = new ArrayList();
+		values.add("Ravi");
+		values.add("Radhe");
+		values.add("Raman");
+		values.add("Avishek");
+		values.add("Poushali");
+		
+		//for ascending order o1.compareTo(o2) --> usually sort(values) for wrapper class 
+		//but I have user comparater as an example for Obj uderdefined.
+		Collections.sort(values, (o1, o2) -> o2.compareTo(o1));
+		values.forEach(System.out::println);
+		
+	}
+	private void comparatorInteger() {
 		List<Integer> values = new ArrayList();
 		values.add(777);
 		values.add(808);

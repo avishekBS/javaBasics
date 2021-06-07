@@ -34,6 +34,11 @@ public class ArrayListSortComparable {
 		while (itr.hasNext()) {
 			System.out.println(itr.next());
 		}
+		ArrayList<Student> students1 = new ArrayList<>();
+		students1.add(new Student(87, 839021, "Avishek"));
+		students1.add(new Student(68, 839011, "Poushali"));
+		students1.add(new Student(97, 839001, "shutup"));
+		students1.add(new Student(9, 839021, "faltu"));
 	}
 
 }
