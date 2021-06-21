@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h5>Use to implements Servlet interface.</h5>
+Click to <a href="servletHello">Invoke Implements Servlet</a>
+
+<h5>Use to extends Generic Servlet Program.</h5>
+Click to <a href="genericServletHello">Invoke Generic Servlet</a>
+
+<h5>Use to extends HttpServlet class with service method. DoGet method called by default.<br>Learn ServletConfig() and ServletContext()</h5>
+	<form action="helloMessage">
+		Enter name: <input type="text" name="name">
+		<input type="submit" value="submit">
+	</form>
+
+<h5>Use for your Post servlet program using doPost. Do post internally use service method</h5>
+	<form action="addTwoNum" method="post">
+		Enter num1: <input type="text" name="num1">
+		Enter num2: <input type="text" name="num2">
+		<input type="submit" value="submit">
+	</form>
+
+<h5>Use for Request Dispatcher call servlet from servlet</h5>
+	<form action="loginDispatcher" method="post">
+		Enter Username: <input type="text" name="uName">
+		Enter Password: <input type="text" name="pwd">
+		<input type="submit" value="Login">
+	</form>
+
+<h5>Use for Send Redirect outside Server.</h5>
+	<form action="myGoogleSearch" method="get">
+		Search Keyword: <input type="text" name="search">
+		<input type="submit" value="Google Search">
+	</form>
+
+<h5>Welcome to Login App by Cookie</h5>  
+<a href="CookieLogin.html">Login</a>|  
+<a href="ProfileServlet">Profile</a>  
+</body>
+</html>
