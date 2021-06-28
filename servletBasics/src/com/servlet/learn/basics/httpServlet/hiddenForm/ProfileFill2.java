@@ -27,7 +27,6 @@ public class ProfileFill2 extends HttpServlet {
 			out.print(" & your pet name is "+petName + "</p>");
 		}
 		else {
-			System.out.println("there");
 			request.getRequestDispatcher("profileFill1").include(request, response);
 			out.print("<p style=\"color:red;\"> Please fill data<b>");
 		}

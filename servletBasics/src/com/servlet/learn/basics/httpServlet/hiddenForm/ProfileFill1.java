@@ -26,14 +26,6 @@ public class ProfileFill1 extends HttpServlet {
 	        out.print("<input type='submit' value='submit'>");  
 	        out.print("</form>");  
 		}
-		else {
-			request.getRequestDispatcher("ProfileFill1.html").include(request, response);
-			for (Cookie cookie : cookies) {
-				if(cookie.getName().equals("loginName")) {
-					out.print("<p style=\"color:red;\">"+cookie.getValue() + " please select a value<b>");		
-				}
-			}
-			}
 	}
 
 }
