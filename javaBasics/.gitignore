@@ -1,8 +1,0 @@
-/bin/
-/.classpath
-/.project
-/org.eclipse.jdt.core.prefs
-/target/javaBasics-*.jar
-/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
-/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
-/target/
