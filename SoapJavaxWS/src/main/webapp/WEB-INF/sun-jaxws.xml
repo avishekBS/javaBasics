@@ -5,4 +5,24 @@
   implementation="com.learnings.javax.ws.HelloSoapWS"
   url-pattern="/ws/hello"
   />
+  <endpoint
+  name="TestMart"
+  implementation="com.learnings.javax.ws.TestMart"
+  url-pattern="/ws/MyTestMartService"
+  />
+  <endpoint
+  name="RetailStores"
+  implementation="com.learnings.javax.ws.RetailStore"
+  url-pattern="/ws/MyRetailStores"
+  />
+  <endpoint
+  name="MyCompany"
+  implementation="com.learnings.javax.ws.sei.MyCompany"
+  url-pattern="/ws/MyCompany"
+  />
+  <endpoint
+  name="MyCalculator"
+  implementation="com.learnings.javax.ws.handling.exception.CalculatorImpl"
+  url-pattern="/ws/MyCalculator"
+  />
 </endpoints>
