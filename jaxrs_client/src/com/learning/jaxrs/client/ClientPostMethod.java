@@ -1,7 +1,10 @@
 package com.learning.jaxrs.client;
 
+import java.util.Date;
+
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.Invocation.Builder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
@@ -9,20 +12,20 @@ import javax.ws.rs.core.Response;
 
 import com.learning.jersey.learningJerseyTwo.model.Message;
 
-public class ClientBasics {
+public class ClientPostMethod {
 	static Client client = ClientBuilder.newClient();
 	
 	public static void main(String[] args) {
-		WebTarget baseTarget = ClientBasics.client.target("http://localhost:8081/learningJerseyTwo/webapi/");
+		WebTarget baseTarget = ClientPostMethod.client.target("http://localhost:8081/learningJerseyTwo/webapi/");
 		WebTarget resourceTarget = baseTarget.path("messages");
-		WebTarget target = resourceTarget.path("{messageId}");
-		WebTarget resolveTemplate = target.resolveTemplate("messageId", 2);
 		
-		Builder request = resolveTemplate.request(MediaType.APPLICATION_JSON);
-		Response response = request.get();
+		Message message = new Message(3, "test from client", "Abbey", new Date());
 		
-		Message message = response.readEntity(Message.class);
-		System.out.println(message.toString());
+		Builder request = resourceTarget.request();
+		Response response = request.post(Entity.json(message));
+		
+		Message responseMessage = response.readEntity(Message.class);
+		System.out.println(responseMessage);
 		
 	}
 	
