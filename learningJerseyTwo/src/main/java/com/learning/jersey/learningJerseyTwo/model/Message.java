@@ -61,4 +61,10 @@ public class Message {
 		link.setRel(rel);
 		links.add(link);
 	}
+	@Override
+	public String toString() {
+		return "Message [id=" + id + ", message=" + message + ", author=" + author + ", date=" + date + ", links="
+				+ links + "]";
+	}
+	
 }

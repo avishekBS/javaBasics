@@ -2,16 +2,14 @@ package com.learning.jersey.learningJerseyTwo.resources;
 
 import java.net.URI;
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.List;
-
+import javax.inject.Singleton;
 import javax.ws.rs.BeanParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.CookieParam;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.HeaderParam;
-import javax.ws.rs.HttpMethod;
 import javax.ws.rs.MatrixParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -31,13 +29,15 @@ import com.learning.jersey.learningJerseyTwo.beans.QueryParamBeans;
 import com.learning.jersey.learningJerseyTwo.exception.MessageNotFoundException;
 import com.learning.jersey.learningJerseyTwo.model.Message;
 import com.learning.jersey.learningJerseyTwo.model.MessageError;
-import com.learning.jersey.learningJerseyTwo.model.MessageHATEOS;
 import com.learning.jersey.learningJerseyTwo.service.MessageService;
 
 @Path("/messages")
+@Singleton  //--> by default with every request new obj of resource is created. but if we want
+//resource class to be init once then use @singleton
 public class MessageResource {
 
 	MessageService service = null;
+	private int counter;
 	public MessageResource() throws ParseException {
 		service = new MessageService();
 	}
@@ -53,6 +53,8 @@ public class MessageResource {
 			@QueryParam("start") int startIndex,
 			@QueryParam("size") int searchSize
 			) throws ParseException{
+		System.out.println("is initialised everytime? if yes then value will be 0 will every GET request."+counter);
+			counter++;
 		if (searchByYear > 0)
 			return service.getMessageServiceForYearFilter(searchByYear);
 		else if (startIndex >=0 && searchSize > 0) {
