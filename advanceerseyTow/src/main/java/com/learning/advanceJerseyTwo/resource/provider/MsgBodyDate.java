@@ -23,7 +23,7 @@ public class MsgBodyDate implements MessageBodyWriter<Date>, MessageBodyReader<D
 	 */
 	@Override
 	public boolean isWriteable(Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType) {
-		System.out.println("isWriteable...");
+		System.out.println("MessageBodyWriter: is Writable:");
 		if (type.getName().equals(Date.class.getName())) {
 			return true;
 		}
@@ -40,13 +40,14 @@ public class MsgBodyDate implements MessageBodyWriter<Date>, MessageBodyReader<D
 	public void writeTo(Date t, Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType,
 			MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream)
 			throws IOException, WebApplicationException {
+		System.out.println("MessageBodyWriter: is Writable: true");
 		entityStream.write(t.toString().getBytes());
 		
 	}
 
 	@Override
 	public boolean isReadable(Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType) {
-		System.out.println("isReadable...");
+		System.out.println("MessageBodyReader: is Readable:");
 		if (type.getName().equals(Date.class.getName())) {
 			return true;
 		}
@@ -57,6 +58,7 @@ public class MsgBodyDate implements MessageBodyWriter<Date>, MessageBodyReader<D
 	public Date readFrom(Class<Date> type, Type genericType, Annotation[] annotations, MediaType mediaType,
 			MultivaluedMap<String, String> httpHeaders, InputStream entityStream)
 			throws IOException, WebApplicationException {
+		System.out.println("MessageBodyReader: is Readable: true");
 		Date date = null;
 		try {
 			date = type.newInstance();
@@ -67,7 +69,6 @@ public class MsgBodyDate implements MessageBodyWriter<Date>, MessageBodyReader<D
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("here....");
 		return date;
 	}
 
