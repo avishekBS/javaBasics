@@ -1,0 +1,68 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- JDBC Database connection settings -->
+        <property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+        <property name="connection.url">jdbc:oracle:thin:@localhost:1521:xe</property>
+        <property name="connection.username">system</property>
+        <property name="connection.password">system</property>
+        <!-- JDBC connection pool settings ... using built-in test pool -->
+        <property name="connection.pool_size">1</property>
+        <!-- Select our SQL dialect -->
+        <property name="dialect">org.hibernate.dialect.Oracle9iDialect</property>
+        <!-- Echo the SQL to stdout -->
+        <property name="show_sql">true</property>
+        <!-- Set the current session context -->
+		<property name="hibernate.current_session_context_class">org.hibernate.context.internal.ThreadLocalSessionContext</property>
+        <!-- Drop and re-create the database schema on startup -->
+        <property name="hbm2ddl.auto">create</property>
+        <!-- dbcp connection pool configuration 
+        <property name="hibernate.dbcp.initialSize">5</property>
+        <property name="hibernate.dbcp.maxTotal">20</property>
+        <property name="hibernate.dbcp.maxIdle">10</property>
+        <property name="hibernate.dbcp.minIdle">5</property>
+        <property name="hibernate.dbcp.maxWaitMillis">-1</property>-->
+        
+        <!-- BASIC -->
+        <mapping class="com.learn.hibernate.entity.User" />
+        
+        <!-- EMBEDDED element is same table
+       	<mapping class="com.learn.hibernate.entity.Employee" />-->
+       	
+       	<!-- EMBEDDED element is same table ONE to MANY
+       	<mapping class="com.learn.hibernate.entity.one2many.embedded.User" />-->
+       
+       <!-- ONE 2 ONE 
+       <mapping class="com.learn.hibernate.entity.one2one.User" />
+       <mapping class="com.learn.hibernate.entity.one2one.DrivingLicense" />-->
+       
+       <!-- ONE to MANY 
+       <mapping class="com.learn.hibernate.entity.one2many.User" />
+       <mapping class="com.learn.hibernate.entity.one2many.Vehicle" />-->
+       
+       <!-- Many to ONE
+       <mapping class="com.learn.hibernate.entity.many2one.User" />
+       <mapping class="com.learn.hibernate.entity.many2one.Vehicle" /> -->
+       
+       <!-- Many to Many 
+       <mapping class="com.learn.hibernate.entity.many2many.User" />
+       <mapping class="com.learn.hibernate.entity.many2many.RentalCar" /> -->
+       
+       <!-- INHERITANCE SINGLE TABLE 
+       <mapping class="com.learn.hibernate.entity.inheritance.Employee" />
+       <mapping class="com.learn.hibernate.entity.inheritance.TCSEmployee" />
+       <mapping class="com.learn.hibernate.entity.inheritance.CovanceEmployee" />-->
+       
+        <!-- INHERITANCE  TABLE PER CLASS -This creates new table for all class 
+       <mapping class="com.learn.hibernate.entity.inheritance.TPC.Employee" />
+       <mapping class="com.learn.hibernate.entity.inheritance.TPC.TCSEmployee" />
+       <mapping class="com.learn.hibernate.entity.inheritance.TPC.CovanceEmployee" />-->
+       
+        <!-- INHERITANCE  JOINED -This has parent class variables as column 
+       <mapping class="com.learn.hibernate.entity.inheritance.joined.Employee" />
+       <mapping class="com.learn.hibernate.entity.inheritance.joined.TCSEmployee" />
+       <mapping class="com.learn.hibernate.entity.inheritance.joined.CovanceEmployee" />-->
+    </session-factory>
+</hibernate-configuration>
