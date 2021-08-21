@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -18,6 +20,14 @@ import org.hibernate.annotations.GeneratorType;
 
 @Entity (name = "details") //--> when table name is not found it takes Entity name as table name
 @Table (name = "user_details")
+@NamedQueries (
+		{
+			@NamedQuery (
+					name = "findUserById",
+					query = "from details where userId = ?1"
+					)
+		}
+	)
 public class User {
 	
 	@Id

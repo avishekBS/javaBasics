@@ -1,10 +1,17 @@
 package com.learn.hibernate;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Restrictions;
+import org.hibernate.query.Query;
 
 import com.learn.hibernate.entity.User;
 
@@ -22,6 +29,9 @@ public class UserService {
 		us.update(user);
 		user = us.fetch();
 		us.delete(user);
+		us.fetchAll();
+		us.fetchByIdNamedQuery();
+		us.fetchByIdCriteriaAPI();
 		us.session.close();
 	}
 
@@ -44,18 +54,45 @@ public class UserService {
 	private void delete(User user) {
 		session.beginTransaction();
 		session.delete(user);
-		System.out.println(user.toString());
 		session.getTransaction().commit();
 	}
 	
 	private void update(User user) {
-		System.out.println("*************");
 		session.beginTransaction();
 		user.setUserName("updated");
 		session.update(user);
 		session.getTransaction().commit();
 		System.out.println(user.toString());
-		System.out.println("*************");
+	}
+	
+	private void fetchAll() {
+		session.beginTransaction();
+		Query createQuery = session.createQuery("from details");
+		List<User> list = createQuery.list();
+		session.getTransaction().commit();
+		for (Object user : list) {
+			System.out.println(user.toString());
+		}
+	}
+	private void fetchByIdNamedQuery() {
+		session.beginTransaction();
+		Query createQuery = session.getNamedQuery("findUserById");
+		createQuery.setParameter(1, 8);
+		List<User> list = createQuery.getResultList();
+		session.getTransaction().commit();
+		for (Object user : list) {
+			System.out.println(user.toString());
+		}
+	}
+	private void fetchByIdCriteriaAPI() {
+		session.beginTransaction();
+		Criteria createCriteria = session.createCriteria(User.class);
+		createCriteria.add(Restrictions.ilike("userName", "% 1%"));
+		List<User> list = createCriteria.list();
+		session.getTransaction().commit();
+		for (Object user : list) {
+			System.out.println(user.toString());
+		}
 	}
 
 }
