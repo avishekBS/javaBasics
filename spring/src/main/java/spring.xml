@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:util="http://www.springframework.org/schema/util" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+        
+	<bean id="bike" class="com.learning.framework.spring.xml.di.Bike">
+	<!-- With Const value is mandatory other are optional if multiple constructor is defeined
+		<constructor-arg type="java.lang.String" index="0" value="Royal Enfield"></constructor-arg>
+		<constructor-arg type="int" index="1" value="23456"></constructor-arg>
+		<constructor-arg type="int" index="2" value="09876"></constructor-arg>-->
+		
+	<!-- Use getter and setters for property tags -->
+		<property name="model" value="Bajaj"></property>
+		<property name="chasisNo" value="23456"></property>
+		<property name="EngineNo" value="09876"></property>
+		<property name="fontTyre" ref="tyreA"></property> 
+		<property name="rearTyre" ref="tyreB"></property> 
+		<property name="listOfLamps">
+			<list>
+				<ref bean="headLamp" />
+				<ref bean="tailLamp" />
+			</list>
+		</property> 
+	</bean>
+	<bean id="tyreA" class="com.learning.framework.spring.xml.di.Tyre">
+		<property name="manufacture" value="Bajaj"></property>
+		<property name="tyreSize" value="28"></property>
+	</bean>
+	<bean id="tyreB" class="com.learning.framework.spring.xml.di.Tyre">
+		<property name="manufacture" value="Bajaj"></property>
+		<property name="tyreSize" value="32"></property>
+	</bean>
+	<bean id="headLamp" class="com.learning.framework.spring.xml.di.Lamp">
+		<property name="power" value="10"></property>
+		<property name="type" value="round"></property>
+	</bean>
+	<bean id="tailLamp" class="com.learning.framework.spring.xml.di.Lamp">
+		<property name="power" value="3"></property>
+		<property name="type" value="square"></property>
+	</bean>
+</beans>
