@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:util="http://www.springframework.org/schema/util" xsi:schemaLocation="
-        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans.xsd 
+    http://www.springframework.org/schema/context/ 
+    http://www.springframework.org/schema/context/spring-context.xsd">
         
-	<bean id="bike" class="com.learning.framework.spring.xml.di.Bike">
+	<bean id="bikeParent" class="com.learning.framework.spring.xml.di.Bike">
 	<!-- With Const value is mandatory other are optional if multiple constructor is defeined
 		<constructor-arg type="java.lang.String" index="0" value="Royal Enfield"></constructor-arg>
 		<constructor-arg type="int" index="1" value="23456"></constructor-arg>
@@ -20,10 +21,17 @@
 		<property name="listOfLamps">
 			<list>
 				<ref bean="headLamp" />
-				<ref bean="tailLamp" />
 			</list>
-		</property> 
+		</property>
 	</bean>
+	<bean id="bike" class="com.learning.framework.spring.xml.di.Bike"
+	parent="bikeParent">
+	<property name="listOfLamps">
+		<list merge="true">
+			<ref bean="tailLamp" />
+		</list>
+	</property>
+</bean>
 	<bean id="tyreA" class="com.learning.framework.spring.xml.di.Tyre">
 		<property name="manufacture" value="Bajaj"></property>
 		<property name="tyreSize" value="28"></property>
