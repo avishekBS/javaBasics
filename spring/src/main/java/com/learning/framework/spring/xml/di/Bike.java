@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
-public class Bike implements ApplicationContextAware, BeanNameAware{
+public class Bike implements Automobile, ApplicationContextAware, BeanNameAware, InitializingBean, DisposableBean{
 	
 	private String model;
 	private int chasisNo;
@@ -19,7 +21,7 @@ public class Bike implements ApplicationContextAware, BeanNameAware{
 	private String beanName;
 	
 	public Bike() {
-		System.out.println("Bike() default constructor");
+		System.out.println("Bike() default constructor. Bean Name:"+beanName);
 	}
 	
 	public Bike(String model, int chasisNo, int engineNo) {
@@ -52,10 +54,6 @@ public class Bike implements ApplicationContextAware, BeanNameAware{
 		this.engineNo = engineNo;
 	}
 
-	public void print() {
-		System.out.println("This is a EV bike");
-	}
-	
 	public Tyre getFontTyre() {
 		return fontTyre;
 	}
@@ -107,5 +105,30 @@ public class Bike implements ApplicationContextAware, BeanNameAware{
 	public void setBeanName(String beanName) {
 		this.beanName = beanName;
 	}
-	
+
+	public void afterPropertiesSet() throws Exception {
+		System.out.println("InitializingBean init method called from Bike class. Bean Name:"+beanName);
+	}
+
+	public void destroy() throws Exception {
+		System.out.println("disposableBean destroy method called from Bike class. Bean Name:"+beanName);
+	}
+	public void myInit() throws Exception {
+		System.out.println("custom init method called from Bike class. Bean Name:"+beanName);
+	}
+
+	public void myDispose() throws Exception {
+		System.out.println("custom destroy method called from Bike class Bean Name:"+beanName);
+	}
+	public void globalBeansInit() throws Exception {
+		System.out.println("global BeansInit method called from Bike class Bean Name:"+beanName);
+	}
+
+	public void globalBeansDispose() throws Exception {
+		System.out.println("global Beansdestroy method called from Bike class Bean Name:"+beanName);
+	}
+
+	public void print() {
+		System.out.println(" This is a bike from "+Bike.class);
+	}
 }
