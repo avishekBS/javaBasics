@@ -27,5 +27,8 @@ public class App {
 		}
 		Automobile car = (Automobile) context.getBean("car");
 		car.print();
+		String message = context.getMessage("message.source.example1", null, null);
+		System.out.println("MessageSource from property value::"+message);
+		
 	}
 }

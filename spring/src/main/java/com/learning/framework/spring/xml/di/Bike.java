@@ -6,8 +6,10 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.context.support.ResourceBundleMessageSource;
 
 public class Bike implements Automobile, ApplicationContextAware, BeanNameAware, InitializingBean, DisposableBean{
 	
@@ -19,6 +21,8 @@ public class Bike implements Automobile, ApplicationContextAware, BeanNameAware,
 	private List<Lamp> listOfLamps;
 	ApplicationContext applicationContext;
 	private String beanName;
+	@Autowired
+	private ResourceBundleMessageSource messageSource;
 	
 	public Bike() {
 		System.out.println("Bike() default constructor. Bean Name:"+beanName);
@@ -78,6 +82,14 @@ public class Bike implements Automobile, ApplicationContextAware, BeanNameAware,
 		this.listOfLamps = listOfLamps;
 	}
 
+	public void setMessageSource(ResourceBundleMessageSource messageSource) {
+		this.messageSource = messageSource;
+	}
+
+	public ResourceBundleMessageSource getMessageSource() {
+		return messageSource;
+	}
+
 	public ApplicationContext getApplicationContext() {
 		return applicationContext;
 	}
@@ -130,5 +142,9 @@ public class Bike implements Automobile, ApplicationContextAware, BeanNameAware,
 
 	public void print() {
 		System.out.println(" This is a bike from "+Bike.class);
+	}
+	
+	public void getMessageSourceService() {
+		getMessageSource().getMessage("message.source.example2", null, "defualt message source ",null);
 	}
 }
