@@ -22,9 +22,9 @@ public class TopicService {
 		topicRepository.findAll().forEach(topics::add);
 		return topics;
 	}
-	public Optional<Topic> getTopic(String topicId) {
+	public Topic getTopic(String topicId) {
 		int id = Integer.parseInt(topicId);
-		return topicRepository.findById(id);
+		return topicRepository.findById(id).get();
 	}
 	public Topic addTopic(Topic topic) {
 		return topicRepository.save(topic);

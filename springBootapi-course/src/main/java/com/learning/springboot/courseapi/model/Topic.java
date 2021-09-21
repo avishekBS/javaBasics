@@ -29,4 +29,9 @@ public class Topic {
 	public void setTopicDescription(String topicDescription) {
 		this.topicDescription = topicDescription;
 	}
+	@Override
+	public String toString() {
+		return "Topic [topicId=" + topicId + ", topicName=" + topicName + ", topicDescription=" + topicDescription
+				+ "]";
+	}
 }
