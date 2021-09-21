@@ -1,13 +1,13 @@
-package io.explore.spring.boot.api;
+package io.explore.spring.boot.starterapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MyAppAPI {
+public class MyBootStarterAPI {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MyAppAPI.class, args);
+		SpringApplication.run(MyBootStarterAPI.class, args);
 	}
 
 }
