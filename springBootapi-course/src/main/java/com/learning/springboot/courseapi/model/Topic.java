@@ -1,18 +1,16 @@
 package com.learning.springboot.courseapi.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Topic {
 
+	@Id
 	private int topicId;
 	private String topicName;
 	private String topicDescription;
-	public Topic() {
-		// TODO Auto-generated constructor stub
-	}
-	public Topic(int topicId, String topicName, String topicDescription) {
-		this.topicId = topicId;
-		this.topicName = topicName;
-		this.topicDescription = topicDescription;
-	}
+	
 	public int getTopicId() {
 		return topicId;
 	}

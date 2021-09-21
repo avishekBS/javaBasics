@@ -2,6 +2,7 @@ package com.learning.springboot.courseapi.controller;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,7 +28,7 @@ public class TopicController {
 	}
 	
 	@RequestMapping("/topics/{topicId}")
-	public Topic getTopics(@PathVariable("topicId") String id) {
+	public Optional<Topic> getTopics(@PathVariable("topicId") String id) {
 		return topicService.getTopic(id);
 	}
 	
@@ -35,8 +36,8 @@ public class TopicController {
 	public Topic addTopics(@RequestBody Topic topic) {
 		return topicService.addTopic(topic);
 	}
-	@PutMapping("/topics/{topicId}")
-	public List<Topic> updateTopics(@RequestBody Topic topic, @PathVariable String topicId) {
+	@PutMapping("/topics")
+	public Topic updateTopics(@RequestBody Topic topic) {
 		return topicService.updateTopic(topic);
 	}
 	@DeleteMapping("/topics/{topicId}")

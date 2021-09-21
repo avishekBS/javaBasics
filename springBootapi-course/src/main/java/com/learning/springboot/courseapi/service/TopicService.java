@@ -3,44 +3,38 @@ package com.learning.springboot.courseapi.service;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.learning.springboot.courseapi.model.Topic;
+import com.learning.springboot.courseapi.repo.TopicsRepository;
 
 @Service
 public class TopicService {
-	private List<Topic> topics = new ArrayList<>(Arrays.asList(
-			new Topic(101, "JAVA", "JAVA Description"),
-			new Topic(102, "SERVLET", "SERVLET Description"),
-			new Topic(103, "WSDL", "WSDL Description"),
-			new Topic(104, "RESTFUL", "RESTFUL Description"),
-			new Topic(105, "SPRING FRAMEWORK", "SPRING FRAMEWORK Description")
-			));
+	
+	@Autowired
+	private TopicsRepository topicRepository;
+	
 	public List<Topic> getTopics() {
+		List<Topic> topics = new ArrayList<Topic>();
+		topicRepository.findAll().forEach(topics::add);
 		return topics;
 	}
-	public Topic getTopic(String topicId) {
+	public Optional<Topic> getTopic(String topicId) {
 		int id = Integer.parseInt(topicId);
-		return topics.stream().filter(t ->t.getTopicId() == id).findFirst().get();
+		return topicRepository.findById(id);
 	}
 	public Topic addTopic(Topic topic) {
-		topics.add(topic);
-		return topics.stream().filter(t ->t.getTopicId() == topic.getTopicId()).findFirst().get();
+		return topicRepository.save(topic);
 	}
-	public List<Topic> updateTopic(Topic topic) {
-		for (int i = 0; i < topics.size(); i++) {
-			if (topics.get(i).getTopicId() == topic.getTopicId())
-				topics.set(i, topic);
-		}
-		return topics;
+	public Topic updateTopic(Topic topic) {
+		return topicRepository.save(topic);
 	}
 	public List<Topic> deleteTopic(String topicId) {
 		int id = Integer.parseInt(topicId);
-		for (int i = 0; i < topics.size(); i++) {
-			if (topics.get(i).getTopicId() == id)
-				topics.remove(i);
-		}
-		return topics;
+		topicRepository.deleteById(id);
+		return getTopics();
 	}
 }
