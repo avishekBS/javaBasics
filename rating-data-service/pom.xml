@@ -8,38 +8,25 @@
 		<version>2.5.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.learning.springboot.courseapi</groupId>
-	<artifactId>springBootapi-course</artifactId>
+	<groupId>com.learning.springboot.microservices</groupId>
+	<artifactId>rating-data-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>springBootapi-course</name>
-	<description>Course API is a demo project on spring Boot</description>
+	<name>rating-data-service</name>
+	<description>rating-data-service is a demo project on spring Boot microservices</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>org.apache.derby</groupId>
-			<artifactId>derby</artifactId>
-			<scope>runtime</scope>
-		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-        	<groupId>org.springframework.boot</groupId>
-       		<artifactId>spring-boot-starter-actuator</artifactId>
-    	</dependency>
 	</dependencies>
 
 	<build>
