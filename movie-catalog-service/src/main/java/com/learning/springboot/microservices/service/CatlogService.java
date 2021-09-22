@@ -34,7 +34,9 @@ public class CatlogService {
 		
 		//Iterate over ratings List --> ratings.stream().map(rating ->{}).collect(Collectors.toList());
 		 List<CatalogItem> catalogItems = ratings.stream().map(rating -> {
-			Movie movie = restTemplate.getForObject("http://localhost:8091/movies/"+rating, Movie.class);
+			Movie movie = restTemplate.getForObject
+					("http://movie-info-service/movies/"+rating, Movie.class);
+					//("http://localhost:8091/movies/"+rating, Movie.class);
 			return new CatalogItem(movie.getName(), userId, rating.getRating());
 		}).collect(Collectors.toList());
 		 CatalogItemListWrapper catalogItemListWrapper = new CatalogItemListWrapper();
