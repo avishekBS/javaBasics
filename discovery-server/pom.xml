@@ -8,24 +8,21 @@
 		<version>2.5.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.learning.springboot.microservices</groupId>
-	<artifactId>movie-info-service</artifactId>
+	<groupId>com.learning.springboot.discoveryserver</groupId>
+	<artifactId>discovery-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>movie-info-service</name>
-	<description>movie-info-service is a demo project on spring Boot microservices</description>
+	<name>discovery-server</name>
+	<description>discovery-server is a demo project on spring Boot microservices</description>
 	<properties>
 		<java.version>1.8</java.version>
 		<spring-cloud.version>2020.0.3</spring-cloud.version>
 	</properties>
 	<dependencies>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -43,6 +40,7 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -51,4 +49,5 @@
 			</plugin>
 		</plugins>
 	</build>
+
 </project>
