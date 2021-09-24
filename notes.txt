@@ -1,9 +1,0 @@
-netstat -ano | findstr 8080
-taskkill /F /PID pid_number
-
-java -jar ****.jar --> go to target or jar location to execute
-java -jar server.port=8564 ****.jar --> go to target or jar location to execute overrides the spring application port and runs in 8564 port
-
-localhost:8090/catalog/8
-localhost:8091/movies/MoneyHeist
-localhost:8092/ratingsdata/MoneyHeist
