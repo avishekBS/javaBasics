@@ -13,6 +13,8 @@ import com.learning.springboot.microservices.model.CatalogItem;
 import com.learning.springboot.microservices.model.CatalogItemListWrapper;
 import com.learning.springboot.microservices.model.Movie;
 import com.learning.springboot.microservices.model.Rating;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 
 @Service
 public class CatlogService {
@@ -22,6 +24,14 @@ public class CatlogService {
 	@Autowired
 	private WebClient.Builder webClientBuilder;
 	
+	
+	@HystrixCommand(fallbackMethod = "getFallbackCatalog",
+			commandProperties = {
+					@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "2000"),
+			        @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "5"),
+			        @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "50"),
+			        @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "5000")
+			        })
 	public CatalogItemListWrapper getCatalog(String userId) {
 		
 		List<Rating> ratings = Arrays.asList(
@@ -35,13 +45,19 @@ public class CatlogService {
 		//Iterate over ratings List --> ratings.stream().map(rating ->{}).collect(Collectors.toList());
 		 List<CatalogItem> catalogItems = ratings.stream().map(rating -> {
 			Movie movie = restTemplate.getForObject
-					("http://movie-info-service/movies/"+rating, Movie.class);
+					("http://movie-info-service/movies/"+rating.getMovieId(), Movie.class);
 					//("http://localhost:8091/movies/"+rating, Movie.class);
 			return new CatalogItem(movie.getName(), userId, rating.getRating());
 		}).collect(Collectors.toList());
 		 CatalogItemListWrapper catalogItemListWrapper = new CatalogItemListWrapper();
 		 catalogItemListWrapper.setListofCatalogItem(catalogItems);
 		 return catalogItemListWrapper;
+	}
+	private CatalogItemListWrapper getFallbackCatalog(String userId) {
+		CatalogItemListWrapper item = new CatalogItemListWrapper();
+		item.setListofCatalogItem(Arrays.asList(new CatalogItem("Hystrix fallback called", "", 0)));
+		return item;
+
 	}
 }
 
