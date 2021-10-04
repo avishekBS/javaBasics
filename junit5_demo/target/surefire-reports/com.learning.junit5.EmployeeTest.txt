@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: com.learning.junit5.EmployeeTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 2, Errors: 1, Skipped: 0, Time elapsed: 0.038 s <<< FAILURE! - in com.learning.junit5.EmployeeTest
+com.learning.junit5.EmployeeTest.testEmployeeTotalSalary  Time elapsed: 0.021 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: Test to check Employee Total salary ==> expected: <110.0> but was: <210.0>
+	at com.learning.junit5.EmployeeTest.testEmployeeTotalSalary(EmployeeTest.java:22)
+
+com.learning.junit5.EmployeeTest.testExceptionHandling  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.ArithmeticException: / by zero
+	at com.learning.junit5.EmployeeTest.testExceptionHandling(EmployeeTest.java:27)
+
+com.learning.junit5.EmployeeTest.testemployeeVariableSalary  Time elapsed: 0 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: Test to check Employee Variable salary ==> expected: <10.0> but was: <0.0>
+	at com.learning.junit5.EmployeeTest.testemployeeVariableSalary(EmployeeTest.java:14)
+
