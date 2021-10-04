@@ -26,6 +26,10 @@ public class CatlogService {
 	
 	
 	@HystrixCommand(fallbackMethod = "getFallbackCatalog",
+			threadPoolProperties = {
+			        @HystrixProperty(name = "coreSize", value = "30"), // This is the number to request/thread to be allowed at same time
+			        @HystrixProperty(name = "maxQueueSize", value = "10") // This is the number of thread which can be request queue.
+			        },
 			commandProperties = {
 					@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "2000"),
 			        @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "5"),

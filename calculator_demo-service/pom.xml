@@ -5,14 +5,14 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.5.4</version>
+		<version>2.5.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.learning.springboot.courseapi</groupId>
-	<artifactId>springBootapi-course</artifactId>
+	<groupId>com.demo.calculator2.api</groupId>
+	<artifactId>calculator_demo-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>springBootapi-course</name>
-	<description>Course API is a demo project on spring Boot</description>
+	<name>calculator_demo-service</name>
+	<description>Calculator API connection is a demo project on spring Boot microservices</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
@@ -25,9 +25,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+
 		<dependency>
-			<groupId>org.apache.derby</groupId>
-			<artifactId>derby</artifactId>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
@@ -35,10 +36,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-        	<groupId>org.springframework.boot</groupId>
-       		<artifactId>spring-boot-starter-actuator</artifactId>
-    	</dependency>
 	</dependencies>
 
 	<build>
