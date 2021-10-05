@@ -3,4 +3,8 @@
   <groupId>com.learning.framework.spring</groupId>
   <artifactId>springAOP</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <properties>
+  	<maven.compiler.target>8</maven.compiler.target>
+	<maven.compiler.source>8</maven.compiler.source>
+  </properties>
 </project>
