@@ -5,6 +5,11 @@
 	<groupId>javaBasics</groupId>
 	<artifactId>javaBasics</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<properties>
+		<maven.compiler.target>8</maven.compiler.target>
+		<maven.compiler.source>8</maven.compiler.source>
+		<java.version>1.8</java.version>
+	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>com.oracle.database.jdbc</groupId>
