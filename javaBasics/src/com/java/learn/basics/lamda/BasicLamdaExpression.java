@@ -1,9 +1,9 @@
 package com.java.learn.basics.lamda;
 
-public class LamdaExample {
+public class BasicLamdaExpression {
 
 	public static void main(String[] args) {
-		LamdaExample example = new LamdaExample();
+		BasicLamdaExpression example = new BasicLamdaExpression();
 		
 		
 		/*
@@ -33,7 +33,7 @@ public class LamdaExample {
 		 *  1. remove public void methodname
 		 *  2. if only one method signature the remove ( ) just use a->a;
 		 *  3. remove { }  if only one line of code
-		 *  4. remove retrun as if will exacrly same as functinal interface
+		 *  4. remove return as the return type will be found in functional interface
 		 */
 		Greet greetLamda = () -> System.out.println("from lamda function");
 		example.geetings(greetLamda);
