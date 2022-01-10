@@ -8,7 +8,8 @@ import java.util.Set;
 public class HashsetCustomeDatatype {
 	Set<Chocolate> chocolates = new HashSet<Chocolate>( Arrays.asList(new Chocolate(75, 10), 
 			new Chocolate(45, 70),
-			new Chocolate(75, 10)));
+			new Chocolate(75, 10),
+			new Chocolate(45, 70)));
 	public static void main(String[] args) {
 		HashsetCustomeDatatype obj = new HashsetCustomeDatatype();
 			obj.chocolates.forEach(System.out::println);

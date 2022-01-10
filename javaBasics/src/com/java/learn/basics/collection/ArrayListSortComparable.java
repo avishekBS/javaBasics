@@ -39,6 +39,7 @@ public class ArrayListSortComparable {
 		students1.add(new Student(68, 839011, "Poushali"));
 		students1.add(new Student(97, 839001, "shutup"));
 		students1.add(new Student(9, 839021, "faltu"));
+		
 	}
 
 }

@@ -14,5 +14,8 @@ public class ArrayDequeDemo {
 		deque.pollLast();
 		System.out.println("AFter poll last --> " + deque);
 		
+		Iterator<String> descendingIterator = deque.descendingIterator();
+		while (descendingIterator.hasNext())
+			System.out.println(descendingIterator.next());
 	}
 }
